@@ -1,0 +1,23 @@
+{
+  "name": "dojo-logging-debugging",
+  "version": "0.0.0",
+  "description": "Dojo on logging and debugging",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eXigentCoder/dojo-logging-debugging.git"
+  },
+  "keywords": [
+    "Dojo",
+    "Logging"
+  ],
+  "author": "Ryan Kotzen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eXigentCoder/dojo-logging-debugging/issues"
+  },
+  "homepage": "https://github.com/eXigentCoder/dojo-logging-debugging#readme"
+}
