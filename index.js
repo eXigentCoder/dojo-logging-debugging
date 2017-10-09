@@ -5,8 +5,8 @@ const programs = [
         value: './1.console'
     },
     {
-        name: '2. todo',
-        value: './2.todo'
+        name: '2. Logging Framework',
+        value: './2.logging-framework'
     }
 ];
 const menu = [
