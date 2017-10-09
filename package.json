@@ -19,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/eXigentCoder/dojo-logging-debugging/issues"
   },
-  "homepage": "https://github.com/eXigentCoder/dojo-logging-debugging#readme"
+  "homepage": "https://github.com/eXigentCoder/dojo-logging-debugging#readme",
+  "devDependencies": {
+    "eslint-config-prettier": "2.6.0",
+    "eslint-plugin-node": "5.2.0",
+    "eslint-plugin-prettier": "2.3.1",
+    "prettier": "1.7.4"
+  }
 }
