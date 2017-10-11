@@ -6,7 +6,7 @@ const programs = [
         value: './1.console'
     },
     {
-        name: '2. Logging Framework',
+        name: '2. Logging Framework (Winston)',
         value: './2.logging-framework'
     },
     {
@@ -14,16 +14,20 @@ const programs = [
         value: './3.file'
     },
     {
-        name: '4. DB Logging',
-        value: './4.db'
+        name: '4. File & Console Combined',
+        value: './4.combined'
     },
     {
-        name: '5. Email Logging',
-        value: './5.email'
+        name: '5. DB Logging',
+        value: './5.db'
     },
     {
-        name: '99. Combined',
-        value: './99.combined'
+        name: '6. Email Logging',
+        value: './6.email'
+    },
+    {
+        name: '7. Elasticsearch',
+        value: './7.elasticsearch'
     }
 ];
 const menu = [

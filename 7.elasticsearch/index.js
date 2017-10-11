@@ -19,12 +19,15 @@ const logger = new winston.Logger({
             client,
             indexPrefix: 'awesome-app',
             mappingTemplate: require('./index-template-mapping.json'),
-            ensureMappingTemplate: true
+            ensureMappingTemplate: true,
+            flushInterval: 300
         })
     ]
 });
 
 logStuff(logger);
 
-// eslint-disable-next-line
-process.exit(0);
+setTimeout(function() {
+    // eslint-disable-next-line
+    process.exit(0);
+}, 1000);

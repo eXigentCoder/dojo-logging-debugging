@@ -21,5 +21,7 @@ const logger = new winston.Logger({
 
 logStuff(logger);
 
-// eslint-disable-next-line
-process.exit(0);
+setTimeout(function() {
+    // eslint-disable-next-line
+    process.exit(0);
+}, 1000);
