@@ -1,19 +1,19 @@
 'use strict';
-const winston = require('winston');
-const logStuff = require('../shared/log-stuff');
+const { createLogger, format, transports, addColors } = require('winston');
+const { combine, timestamp, simple, colorize } = format;
 const levels = require('../shared/levels');
 const colours = require('../shared/colours');
+addColors(colours);
+const logStuff = require('../shared/log-stuff');
 
-winston.addColors(colours);
-const logger = winston.createLogger({
+const logger = createLogger({
     level: 'trace',
     levels: levels,
-    format: winston.format.combine(
-        winston.format.timestamp(),
-        winston.format.colorize({ all: true }),
-        winston.format.simple()
-    ),
-    transports: [new winston.transports.Console()]
+    transports: [
+        new transports.Console({
+            format: combine(colorize({ all: true }), timestamp(), simple())
+        })
+    ]
 });
 
 logStuff(logger);

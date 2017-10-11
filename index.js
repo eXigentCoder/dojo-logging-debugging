@@ -12,6 +12,10 @@ const programs = [
     {
         name: '3. File Logging',
         value: './3.file-logging'
+    },
+    {
+        name: '99. Combined',
+        value: './99.combined'
     }
 ];
 const menu = [
