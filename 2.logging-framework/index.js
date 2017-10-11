@@ -1,5 +1,6 @@
 'use strict';
 const winston = require('winston');
+const logStuff = require('../shared/log-stuff');
 const levels = {
     fatal: 0,
     error: 1,
@@ -8,16 +9,20 @@ const levels = {
     debug: 4,
     trace: 5
 };
+const colours = {
+    fatal: 'magenta',
+    error: 'red',
+    warn: 'yellow',
+    info: 'grey',
+    debug: 'green',
+    trace: 'cyan'
+};
+winston.addColors(colours);
 const logger = winston.createLogger({
-    level: 'info', //can set a default level here
+    level: 'trace',
     levels: levels,
-    format: winston.format.json(),
-    transports: [new winston.transports.Console({ level: 'trace' })]
+    format: winston.format.combine(winston.format.colorize({ all: true }), winston.format.simple()),
+    transports: [new winston.transports.Console()]
 });
 
-logger.fatal("I'm an fatal message");
-logger.error("I'm a error message");
-logger.warn("I'm an warning message");
-logger.info("I'm a info message");
-logger.debug("I'm a debug message");
-logger.trace("I'm a trace message");
+logStuff(logger);
