@@ -1,22 +1,9 @@
 'use strict';
 const winston = require('winston');
 const logStuff = require('../shared/log-stuff');
-const levels = {
-    fatal: 0,
-    error: 1,
-    warn: 2,
-    info: 3,
-    debug: 4,
-    trace: 5
-};
-const colours = {
-    fatal: 'magenta',
-    error: 'red',
-    warn: 'yellow',
-    info: 'grey',
-    debug: 'green',
-    trace: 'cyan'
-};
+const levels = require('../shared/levels');
+const colours = require('../shared/colours');
+
 winston.addColors(colours);
 const logger = winston.createLogger({
     level: 'trace',
