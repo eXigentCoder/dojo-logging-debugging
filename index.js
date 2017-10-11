@@ -14,6 +14,10 @@ const programs = [
         value: './3.file-logging'
     },
     {
+        name: '4. DB Logging',
+        value: './4.db-logging'
+    },
+    {
         name: '99. Combined',
         value: './99.combined'
     }

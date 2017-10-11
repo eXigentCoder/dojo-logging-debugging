@@ -10,15 +10,15 @@ const logger = new winston.Logger({
     level: 'trace',
     levels: levels,
     transports: [
-        new winston.transports.Console({
-            colorize: true,
-            timestamp: true
-        }),
-        new winston.transports.File({
-            filename: 'logs/error.log',
+        new winston.transports.MongoDB({
+            db:
+                'mongodb://192.168.99.100:27017/my-awesome-app?readPreference=primary',
+            collection: 'my-awesome-logs',
             level: 'warn'
         })
     ]
 });
 
 logStuff(logger);
+
+process.exit(0);
