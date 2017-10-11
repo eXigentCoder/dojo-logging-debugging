@@ -8,7 +8,11 @@ winston.addColors(colours);
 const logger = winston.createLogger({
     level: 'trace',
     levels: levels,
-    format: winston.format.combine(winston.format.colorize({ all: true }), winston.format.simple()),
+    format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.colorize({ all: true }),
+        winston.format.simple()
+    ),
     transports: [new winston.transports.Console()]
 });
 
