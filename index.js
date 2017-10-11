@@ -8,6 +8,10 @@ const programs = [
     {
         name: '2. Logging Framework',
         value: './2.logging-framework'
+    },
+    {
+        name: '3. File Logging',
+        value: './3.file-logging'
     }
 ];
 const menu = [
