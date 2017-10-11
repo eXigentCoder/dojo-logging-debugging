@@ -29,7 +29,6 @@ const logger = new winston.Logger({
         })
     ]
 });
-
 const totalNumberOfLines = 13509;
 const lineReader = readLine(path.join(__dirname, './access_log'));
 lineReader
