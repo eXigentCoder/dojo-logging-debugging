@@ -11,9 +11,9 @@ const logger = new winston.Logger({
     levels: levels,
     transports: [
         new winston.transports.Mail({
-            to: 'potz666@gmail.com',
+            to: 'real-human@gmail.com',
             from: 'exceptions@entelect.co.za',
-            host: '192.168.99.100',
+            host: process.env.DOCKER_MACHINE_IP,
             port: '1025',
             level: 'error'
         })

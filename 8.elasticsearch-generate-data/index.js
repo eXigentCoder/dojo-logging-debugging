@@ -10,7 +10,7 @@ const alpine = new Alpine(Alpine.LOGFORMATS.COMBINED);
 const randomGeoHash = require('random-geohash');
 const packageJson = require('../package.json');
 const client = new elasticsearch.Client({
-    host: '192.168.99.100:9200'
+    host: process.env.DOCKER_MACHINE_IP + ':9200'
 });
 const moment = require('moment');
 
@@ -44,7 +44,7 @@ lineReader
             setTimeout(function() {
                 // eslint-disable-next-line
                 process.exit(0);
-            }, 1000);
+            }, 5000);
         }
     })
     .on('error', function(err) {

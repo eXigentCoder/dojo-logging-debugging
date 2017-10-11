@@ -8,7 +8,7 @@ winston.addColors(colours);
 const logStuff = require('../shared/log-stuff');
 
 const client = new elasticsearch.Client({
-    host: '192.168.99.100:9200'
+    host: process.env.DOCKER_MACHINE_IP + ':9200'
 });
 
 const logger = new winston.Logger({
@@ -29,6 +29,7 @@ const logger = new winston.Logger({
 logStuff(logger);
 
 setTimeout(function() {
+    console.log('Done');
     // eslint-disable-next-line
     process.exit(0);
-}, 1000);
+}, 5000);

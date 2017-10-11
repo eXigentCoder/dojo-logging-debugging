@@ -12,7 +12,9 @@ const logger = new winston.Logger({
     transports: [
         new winston.transports.MongoDB({
             db:
-                'mongodb://192.168.99.100:27017/my-awesome-app?readPreference=primary',
+                'mongodb://' +
+                process.env.DOCKER_MACHINE_IP +
+                '/my-awesome-app?readPreference=primary',
             collection: 'my-awesome-logs',
             level: 'debug'
         })
@@ -21,7 +23,8 @@ const logger = new winston.Logger({
 
 logStuff(logger);
 
-// setTimeout(function() {
-//     // eslint-disable-next-line
-//     process.exit(0);
-// }, 1000);
+setTimeout(function() {
+    console.log('Done');
+    // eslint-disable-next-line
+    process.exit(0);
+}, 1000);

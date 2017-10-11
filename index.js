@@ -1,4 +1,5 @@
 'use strict';
+require('dotenv').config();
 const inquirer = require('inquirer');
 const programs = [
     {
