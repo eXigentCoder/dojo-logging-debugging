@@ -1,4 +1,5 @@
 'use strict';
+const movies = require('../data/movies.json');
 
 module.exports = function logStuff(logger) {
     logger.fatal("I'm an fatal message");
@@ -7,4 +8,8 @@ module.exports = function logStuff(logger) {
     logger.info("I'm a info message");
     logger.debug("I'm a debug message");
     logger.trace("I'm a trace message");
+
+    movies.forEach(function(movie) {
+        logger.debug(movie);
+    });
 };

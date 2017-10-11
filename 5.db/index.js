@@ -14,14 +14,14 @@ const logger = new winston.Logger({
             db:
                 'mongodb://192.168.99.100:27017/my-awesome-app?readPreference=primary',
             collection: 'my-awesome-logs',
-            level: 'warn'
+            level: 'debug'
         })
     ]
 });
 
 logStuff(logger);
 
-setTimeout(function() {
-    // eslint-disable-next-line
-    process.exit(0);
-}, 1000);
+// setTimeout(function() {
+//     // eslint-disable-next-line
+//     process.exit(0);
+// }, 1000);
