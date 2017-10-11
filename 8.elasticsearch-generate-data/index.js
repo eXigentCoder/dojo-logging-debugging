@@ -10,7 +10,8 @@ const alpine = new Alpine(Alpine.LOGFORMATS.COMBINED);
 const randomGeoHash = require('random-geohash');
 const packageJson = require('../package.json');
 const client = new elasticsearch.Client({
-    host: process.env.DOCKER_MACHINE_IP + ':9200'
+    host: process.env.DOCKER_MACHINE_IP + ':9200',
+    httpAuth: process.env.ELASTIC_USERNAME + ':' + process.env.ELASTIC_PASSWORD
 });
 const moment = require('moment');
 
