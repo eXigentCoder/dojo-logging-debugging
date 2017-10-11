@@ -19,9 +19,7 @@ services:
     networks: ['stack']
   fakesmtp:
     image: digiplant/fake-smtp
-    ports:
-      - "1025:25"
-    volumes:
-      - ./email:/var/mail
+    ports: ['127.0.0.1:1025:25','${DOCKER_MACHINE_IP}:1025:25']
+    volumes: ['./email:/var/mail']
 
 networks: {stack: {}}

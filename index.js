@@ -11,11 +11,15 @@ const programs = [
     },
     {
         name: '3. File Logging',
-        value: './3.file-logging'
+        value: './3.file'
     },
     {
         name: '4. DB Logging',
-        value: './4.db-logging'
+        value: './4.db'
+    },
+    {
+        name: '5. Email Logging',
+        value: './5.email'
     },
     {
         name: '99. Combined',
