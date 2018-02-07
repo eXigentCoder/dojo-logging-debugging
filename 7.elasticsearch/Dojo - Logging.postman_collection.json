@@ -1,0 +1,315 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Dojo - Logging",
+		"_postman_id": "499e9d14-fc54-6ab7-edc4-7aac93131f49",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "-2. Create Mapping",
+			"request": {
+				"url": "http://localhost:9200/awesome-app-{{logdate}}",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{AuthorizationHeader}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"template\": \"awesome-app-*\",\n\t\"mappings\": {\n        \"_default_\": {\n            \"_all\": { \"enabled\": false, \"omit_norms\": true },\n            \"_source\": { \"enabled\": true },\n            \"dynamic_templates\": [\n                {\n                    \"string_fields\": {\n                        \"match\": \"*\",\n                        \"match_mapping_type\": \"string\",\n                        \"mapping\": {\n                            \"type\": \"string\",\n                            \"index\": \"analyzed\",\n                            \"omit_norms\": true,\n                            \"fields\": {\n                                \"raw\": {\n                                    \"type\": \"string\",\n                                    \"index\": \"not_analyzed\",\n                                    \"ignore_above\": 256\n                                }\n                            }\n                        }\n                    }\n                }\n            ],\n            \"properties\": {\n                \"@timestamp\": { \"type\": \"date\", \"index\": \"not_analyzed\" },\n                \"@version\": { \"type\": \"string\", \"index\": \"not_analyzed\" },\n                \"message\": { \"type\": \"string\", \"index\": \"analyzed\" },\n                \"severity\": { \"type\": \"string\", \"index\": \"not_analyzed\" },\n                \"fields\": {\n                    \"type\": \"object\",\n                    \"dynamic\": true\n                }\n            }\n        }\n    }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "-1. Delete Mapping",
+			"request": {
+				"url": "http://localhost:9200/awesome-app-{{logdate}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{AuthorizationHeader}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "1. Check Server is Up",
+			"request": {
+				"url": "http://localhost:9200",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AuthorizationHeader}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "code",
+							"value": "xWnkliVQJURqB2x1",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://www.getpostman.com/oauth2/callback",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "abc123",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "ssh-secret",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Should return some JSON if running"
+			},
+			"response": []
+		},
+		{
+			"name": "2. Get All Indecies",
+			"request": {
+				"url": {
+					"raw": "http://localhost:9200/_cat/indices?v",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"_cat",
+						"indices"
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": "",
+							"equals": false,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{AuthorizationHeader}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\":{\n    \"bool\":{\n      \"must\":{\n        \"match_phrase\":{\n          \"title\":\"star wars\"\n        }\n      },\n      \"filter\":{\n        \"range\":{\n          \"year\":{\n            \"gte\":1900\n          }\n        }\n      }\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3. Get Mapping",
+			"request": {
+				"url": "http://localhost:9200/awesome-app-{{logdate}}/_mapping",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{AuthorizationHeader}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\":{\n    \"bool\":{\n      \"must\":{\n        \"match_phrase\":{\n          \"title\":\"star wars\"\n        }\n      },\n      \"filter\":{\n        \"range\":{\n          \"year\":{\n            \"gte\":1900\n          }\n        }\n      }\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "4. Search Mapping",
+			"request": {
+				"url": {
+					"raw": "http://localhost:9200/awesome-app-{{logdate}}/log/_search?pretty",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"awesome-app-{{logdate}}",
+						"log",
+						"_search"
+					],
+					"query": [
+						{
+							"key": "pretty",
+							"value": "",
+							"equals": false,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{AuthorizationHeader}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\":{\n    \"bool\":{\n      \"must\":{\n        \"match_phrase\":{\n          \"title\":\"star wars\"\n        }\n      },\n      \"filter\":{\n        \"range\":{\n          \"year\":{\n            \"gte\":1900\n          }\n        }\n      }\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "5. Search For Traces",
+			"request": {
+				"url": {
+					"raw": "http://localhost:9200/awesome-app-{{logdate}}/log/_search?pretty",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"awesome-app-{{logdate}}",
+						"log",
+						"_search"
+					],
+					"query": [
+						{
+							"key": "pretty",
+							"value": "",
+							"equals": false,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{AuthorizationHeader}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\":{\n    \"match\":{\n      \"severity\":\"trace\"\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "6. Search For Messages with a field title of star",
+			"request": {
+				"url": {
+					"raw": "http://localhost:9200/awesome-app-{{logdate}}/log/_search?pretty",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"awesome-app-{{logdate}}",
+						"log",
+						"_search"
+					],
+					"query": [
+						{
+							"key": "pretty",
+							"value": "",
+							"equals": false,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{AuthorizationHeader}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\":{\n    \"match_phrase\":{\n      \"fields.title\":\"Star\"\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
