@@ -33,6 +33,10 @@ const programs = [
     {
         name: '8. Elasticsearch (Generate Data)',
         value: './8.elasticsearch-generate-data'
+    },
+    {
+        name: '9. Pino',
+        value: './9.pino'
     }
 ];
 const menu = [
