@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha",
     "start": "node .",
-    "pipe" : "noPretty=true node ./9.pino | pino-elasticsearch --host http://elastic:changeme@localhost --port 9200 --trace-level trace --size 1"
+    "pipe": "noPretty=true node ./9.pino | pino-elasticsearch --host http://elastic:changeme@localhost --port 9200 --trace-level trace --size 1"
   },
   "repository": {
     "type": "git",
